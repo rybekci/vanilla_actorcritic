@@ -186,6 +186,6 @@ if __name__ == "__main__":
         
         plt.savefig(f'./plots/{file_name}contour.png')
     actorcopy = deepcopy(policy.actor)   
-    plot_surface(policy.actor,100, 1, 20)
-    plot_contour(actorcopy,100, 1, 20)
+    plot_surface(policy.actor,50, 1, 20)
+    plot_contour(actorcopy,50, 1, 20)
     
