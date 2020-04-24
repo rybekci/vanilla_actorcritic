@@ -3,7 +3,7 @@ Basic actor-critic algorithm
 
 
 
-usage: main.py [-h] [--env_name ENV_NAME] [--seed SEED]
+usage: main.py [-h] [--env_name ENV_NAME] [--seed SEED] \\
                [--hidden_size HIDDEN_SIZE]
                [--max_episode_nums MAX_EPISODE_NUMS] [--max_steps MAX_STEPS]
                [--gamma GAMMA] [--save_model]
