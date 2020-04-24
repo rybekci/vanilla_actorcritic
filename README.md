@@ -13,3 +13,4 @@ usage: main.py [-h] [--env_name ENV_NAME] [--seed SEED] <br/>
                [--critic_lr CRITIC_LR]
                
              
+![Image of Yaktocat](pseud_2.JPG)
