@@ -12,5 +12,8 @@ usage: main.py [-h] [--env_name ENV_NAME] [--seed SEED] <br/>
                [--folder_name FOLDER_NAME] [--actor_lr ACTOR_LR] <br/>
                [--critic_lr CRITIC_LR]
                
-             
-![Image of Yaktocat](pseud_2.JPG)
+Pseudocode:
+![](pseud_2.JPG)
+
+References:
+Sutton, R. S., & Barto, A. G. (1998). Introduction to reinforcement learning (Vol. 135). Cambridge: MIT press.
