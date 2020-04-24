@@ -25,12 +25,13 @@ if __name__ == "__main__":
     parser.add_argument("--seed", default=0, type=int)              
     parser.add_argument("--hidden_size", default=128, type=int) 
     parser.add_argument("--max_episode_nums", default=int(2e3), type=int)   
-    parser.add_argument("--max_steps", default=int(1e4), type=int)              
-    parser.add_argument("--batch_size", default=256, type=int)      
+    parser.add_argument("--max_steps", default=int(1e4), type=int)                
     parser.add_argument("--gamma", default=0.9)         # Discount factor
     parser.add_argument("--save_model", action="store_true")       
     parser.add_argument("--load_model", default="")
-    parser.add_argument("--normalizedirs", action="store_false")   # Cancel plotting log              
+    parser.add_argument("--actor_act", default="relu") # Activation func of nn relu | sigmoid
+    parser.add_argument("--critic_act", default="relu")
+    parser.add_argument("--normalizedirs", action="store_false")              
     parser.add_argument('--folder_name', default='results', type=str)
     parser.add_argument('--actor_lr',default=3e-3, type=float)  
     parser.add_argument('--critic_lr',default=3e-3, type=float)  
@@ -39,7 +40,7 @@ if __name__ == "__main__":
     env = gym.make(args.env_name)
     state_dim = env.observation_space.shape[0]
     action_dim = env.action_space.n
-    file_name = '_seed_'+str(args.seed)+'_env_'+str(args.env_name)+'_'+str(args.max_episode_nums) +'.log'
+    file_name = '_seed_'+str(args.seed)+'_env_'+str(args.env_name)+'_'+str(args.max_episode_nums) +'_'+str(args.hidden_size) +'_'+str(args.actor_lr) +'.log'
 
     # Set seeds
     env.seed(args.seed)
@@ -114,8 +115,8 @@ if __name__ == "__main__":
             alp.append(torch.randn(i.size()))
             bet.append(torch.randn(i.size()))
         if args.normalizedirs:
-            normalize_directions_for_weights(alp, q1_weights, 'layer')
-            normalize_directions_for_weights(bet, q1_weights, 'layer')    
+            normalize_directions_for_weights(alp, q1_weights, 'weight')
+            normalize_directions_for_weights(bet, q1_weights, 'weight')    
         for a_i,a in enumerate(np.linspace(-param_range,param_range,r)):
             for b_i,b in enumerate(np.linspace(-param_range,param_range,r)):
                 actor_net = deepcopy(origin_actor)
